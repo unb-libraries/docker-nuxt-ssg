@@ -1,0 +1,16 @@
+name: Build ghcr.io/unb-libraries/nuxt-ssg
+
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    uses: unb-libraries/github-workflows/.github/workflows/build-push-notify.yaml@1.x
+    with:
+      image-name: ghcr.io/unb-libraries/nuxt-ssg
+    secrets:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      GH_CONTAINER_REGISTRY_USER: ${{ secrets.GH_CONTAINER_REGISTRY_USER }}
+      GH_CONTAINER_REGISTRY_TOKEN: ${{ secrets.GH_CONTAINER_REGISTRY_TOKEN }}
